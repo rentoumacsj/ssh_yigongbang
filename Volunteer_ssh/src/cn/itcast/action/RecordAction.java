@@ -38,7 +38,7 @@ public class RecordAction extends ActionSupport implements ModelDriven<Record>{
 		this.recordService = recordService;
 	}
 	
-	//收藏
+	//收藏，需要actId参数
 	public String collect() throws IOException{
 		Volunteer volunteer = (Volunteer) ActionContext.getContext().getSession().get("userInfo");
 		record.setVolId(volunteer.getId());
@@ -50,7 +50,7 @@ public class RecordAction extends ActionSupport implements ModelDriven<Record>{
 		return null;
 	} 
 	
-	//取消收藏
+	//取消收藏，需要actId参数
 	public String cancelCollect() throws IOException{
 		Volunteer volunteer = (Volunteer) ActionContext.getContext().getSession().get("userInfo");
 		record.setVolId(volunteer.getId());
@@ -62,7 +62,7 @@ public class RecordAction extends ActionSupport implements ModelDriven<Record>{
 		return null;
 	}	 
 	
-	//报名
+	//报名，需要actId参数
 	public String join() throws IOException{
 		Volunteer volunteer = (Volunteer) ActionContext.getContext().getSession().get("userInfo");
 		record.setVolId(volunteer.getId());
@@ -71,6 +71,18 @@ public class RecordAction extends ActionSupport implements ModelDriven<Record>{
 		response.setContentType("text/html;charset=UTF-8");  
 		PrintWriter out = response.getWriter();
 		out.print("joined");
+		return null;
+	}
+	
+	//取消报名，需要actId参数
+	public String cancelJoin() throws IOException{
+		Volunteer volunteer = (Volunteer) ActionContext.getContext().getSession().get("userInfo");
+		record.setVolId(volunteer.getId());
+		recordService.cancelJoin(record);
+		HttpServletResponse response = ServletActionContext.getResponse();
+		response.setContentType("text/html;charset=UTF-8");  
+		PrintWriter out = response.getWriter();
+		out.print("canceljoined");
 		return null;
 	}
 	

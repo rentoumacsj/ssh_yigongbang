@@ -103,7 +103,7 @@ public class ActivityAction extends ActionSupport implements ModelDriven<Activit
 	}
 	
 	//获取已报名的活动并返回json数据
-	public String getJoined() throws IOException{
+	public String getSigned() throws IOException{
 		Volunteer volunteer = (Volunteer) ActionContext.getContext().getSession().get("userInfo");
 		List<Activity> list = activityService.getJoinedActivitiesByVolId(volunteer.getId());
 		JSONArray jsonArray = JSONArray.fromObject(list);

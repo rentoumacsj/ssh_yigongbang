@@ -30,6 +30,7 @@
 	
 	<bean id="recordService" class="cn.itcast.service.impl.RecordServiceImpl">
 		<property name="recordDao" ref="recordDao"></property>
+		<property name="activityDao" ref="activityDao"></property>
 	</bean>
 
 </beans>     
