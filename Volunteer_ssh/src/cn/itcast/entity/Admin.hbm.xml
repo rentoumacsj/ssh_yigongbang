@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+        
+<hibernate-mapping package="cn.itcast.entity">
+
+    <class name="Admin" table="admin">
+    	<!-- 主键 -->
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <!-- 非主键映射 -->
+        <property name="phone" column="phone"></property>
+        <property name="password" column="password"></property>
+        <property name="realName" column="realName"></property>
+        <property name="comName" column="comName"></property>
+        <property name="comAddress" column="comAddress"></property>
+    </class>
+</hibernate-mapping>

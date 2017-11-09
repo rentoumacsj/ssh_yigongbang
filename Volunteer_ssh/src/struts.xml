@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="emp" extends="struts-default">
+
+
+		
+		<!-- action实例交给spring容器创建 -->
+		<!-- 员工Action -->
+		<action name="emp_*" class="employeeAction" method="{1}">
+			<result name="list">/WEB-INF/list.jsp</result>
+			<result name="add">/WEB-INF/add.jsp</result>
+			<!-- 添加成功，进入列表（防止刷新就多一条记录问题，所以用重定向） -->
+			<result name="listAction" type="redirectAction">emp_list</result>
+			<result name="edit">/WEB-INF/edit.jsp</result>
+		</action>
+
+		<!-- 管理员Action -->
+		<action name="admin_*" class="cn.itcast.action.AdminAction" method="{1}">
+			<result name="loginFailed">/login.jsp</result>
+			<result name="index" type="redirectAction">emp_list</result>
+		</action>
+
+		<!-- VoluteerAction -->
+		<action name="volunteer_*" class="cn.itcast.action.VolunteerAction" method="{1}">
+		</action>
+		
+		<!-- ActivityAction -->
+		<action name="activity_*" class="cn.itcast.action.ActivityAction" method="{1}">
+		</action>
+		
+		<!-- RecordAction -->
+		<action name="record_*" class="cn.itcast.action.RecordAction" method="{1}">
+		</action>
+		
+	</package>
+
+</struts>
